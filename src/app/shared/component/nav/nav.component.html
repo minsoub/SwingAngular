@@ -1,0 +1,28 @@
+<mat-sidenav-container>
+    <mat-sidenav-content class="contents-notch">
+        <mat-toolbar color="primary" class="custom-toolbar">
+            <span>SwingSaver</span>
+            <span class="empty-spacer"></span>
+            <div>
+                <a mat-button [routerLink]="['/home/group']">그룹관리</a>
+                <a mat-button [routerLink]="['/home/pro-mng']">프로 관리</a>
+                <a mat-button [routerLink]="['/admin/emp-mng']">골프장 관리</a>
+
+                <a mat-button [routerLink]="['/admin/loc-mng']">구매내역</a>
+                <a mat-button [routerLink]="['/admin/qr-mng']">QR 접속현황</a>
+                <a mat-button [routerLink]="['/home/ad-mng']">광고관리(모바일)</a>
+                <!-- a mat-button  *ngIf="role === 'superadmin'" [matMenuTriggerFor]="sysCompany">{{ this.emp.cmpnyCode }}<mat-icon>arrow_drop_down</mat-icon></a  -->
+                <!-- mat-menu #sysCompany="matMenu" xPosition="before">
+                    <button mat-menu-item *ngFor="let company of companyList$ | async; trackBy: trackByCode" (click)="onChangeCompany(company.cmpnyCode)">
+                        {{ (company.cmpnyCode)+ ' (' + (company.cmpnyNm)  + ')' }}
+                    </button>
+                </mat-menu  -->
+                <a mat-button (click)="logout()">로그아웃</a>
+            </div>
+        </mat-toolbar>
+        <div class="contents-container">
+            <router-outlet></router-outlet>
+        </div>
+    </mat-sidenav-content>
+</mat-sidenav-container>
+

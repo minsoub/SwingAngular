@@ -1,0 +1,165 @@
+mat-card {
+    max-width: 300px;
+    min-height: 500px;
+    margin: 15em auto;
+    text-align: center;
+    background: #7668a2;
+    /*background-image: url("../../../../../assets/img/login_bg.png"); */
+    background-position: left bottom;
+    background-repeat: no-repeat;
+    background-size: 450px;
+    padding: 20px;
+}
+
+mat-form-field {
+    display: block;
+}
+
+.mat-button-base {
+    margin: 0 8px 8px 0;
+}
+
+
+@media (max-width: 599px) {
+    .test-contents {
+
+    }
+}
+
+.login-bg {
+    background: orangered;
+    width: 100vw;
+    height: 100vh;
+}
+
+.login-btn {
+    width: 100%;
+}
+
+/**/
+
+.card-container {
+    /* height: 300px; */
+    overflow: hidden;
+    width: 400px;
+    height: 45vh;
+    min-height: 680px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    margin: 9em auto;
+  }
+  
+.title-card {
+    /* background-image: url("../../../../../assets/img/login_bg.png"); */
+    background-position: right bottom;
+    background-repeat: no-repeat;
+    background-size: 600px;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.title-type {
+    margin: 3em;
+    position: absolute;
+    color: #ffffff;
+}
+
+.title-type h1 {
+    margin: 0;
+    font-size: 2.2em;
+}
+
+.title-type p {
+    font-size: 11px;
+    margin: 0;
+}
+
+/* .title-card h1 {
+    transform: translate(-95px, -85px);
+    position: absolute;
+    color: #ffffff;
+    font-size: 2.2em;
+}
+
+.title-card p {
+    transform: translate(-70px, -85px);
+    position: absolute;
+    color: #ffffff;
+    font-size: 11px;
+} */
+
+.title-card .img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 7px solid #8375ae;
+    transform: translateY(45px);
+    /*background-image: url("../../../../../assets/img/icheck_logo.png");*/
+    background-size: 55px;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-color: #ffffff;
+}
+
+.input-card {
+    transform: translatey(80px);
+    padding: 0 40px;
+}
+
+::ng-deep .mat-flat-button.mat-primary, .mat-raised-button.mat-primary, .mat-fab.mat-primary, .mat-mini-fab.mat-primary {
+    background-color: #8375ae;
+}
+
+::ng-deep .mat-form-field-appearance-fill .mat-form-field-flex {
+    background-color: #ffffff;
+}
+
+.login-btn-second {
+    background-color: transparent;
+    box-shadow: unset;
+    color: #585858;
+    width: 47%;
+    font-size: 0.82em;
+}
+
+
+@media (max-width: 599px) {
+    .card-container {
+        overflow: hidden;
+        width: 100vw;
+        height: 100vh;
+        min-height: 600px;
+        background-color: #7668a2;
+        border-radius: 0;
+        display: flex;
+        flex-direction: column;
+        margin: 0 auto;
+    }
+    .login-btn-second {
+        background-color: #dfd8f5;
+        width: 35%;
+    }
+    ::ng-deep .mat-flat-button.mat-primary, .mat-raised-button.mat-primary, .mat-fab.mat-primary, .mat-mini-fab.mat-primary {
+        /* background-color: #fdbd2d; */
+        background-color: #a799d2;
+    }
+    ::ng-deep .mat-form-field-appearance-fill .mat-form-field-flex {
+        background-color: #ffffff;
+    }
+    .login-btn-second {
+        /* background-color: #dfd8f5; */
+        background-color: transparent;
+        box-shadow: unset;
+        color: white;
+        width: 47%;
+        font-size: 0.82em;
+    }
+}
+
+.mat-flat-button.mat-primary.mat-button-disabled, .mat-flat-button.mat-accent.mat-button-disabled, .mat-flat-button.mat-warn.mat-button-disabled, .mat-flat-button.mat-button-disabled.mat-button-disabled, .mat-raised-button.mat-primary.mat-button-disabled, .mat-raised-button.mat-accent.mat-button-disabled, .mat-raised-button.mat-warn.mat-button-disabled, .mat-raised-button.mat-button-disabled.mat-button-disabled, .mat-fab.mat-primary.mat-button-disabled, .mat-fab.mat-accent.mat-button-disabled, .mat-fab.mat-warn.mat-button-disabled, .mat-fab.mat-button-disabled.mat-button-disabled, .mat-mini-fab.mat-primary.mat-button-disabled, .mat-mini-fab.mat-accent.mat-button-disabled, .mat-mini-fab.mat-warn.mat-button-disabled, .mat-mini-fab.mat-button-disabled.mat-button-disabled {
+    color: #ffffff;
+}

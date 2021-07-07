@@ -1,0 +1,85 @@
+<h2 class="dialog-title" *ngIf="mode === 'new'">그룹 등록</h2>
+<h2 class="dialog-title" *ngIf="mode === 'detail' || mode === 'edit'">그룹 수정</h2>
+<form [formGroup]="groupForm">
+
+    <mat-form-field [hidden]="true">
+        <input matInput formControlName="id">
+    </mat-form-field>
+
+    <mat-form-field [hidden]="true">
+        <input matInput formControlName="startdate">
+    </mat-form-field>  
+
+    <mat-form-field [hidden]="true">
+        <input matInput formControlName="enddate">
+    </mat-form-field>      
+
+    <mat-form-field [hidden]="true">
+        <input matInput formControlName="del_yn">
+    </mat-form-field>       
+
+    <mat-form-field appearance="fill">
+        <mat-label>그룹이름</mat-label>
+        <input matInput formControlName="groupname" required>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+        <mat-label>그룹관리자</mat-label>
+        <mat-selection-list formControlName="groupadminid" >
+            <mat-list-option *ngFor="let user of userList$ | async" [value]="user.id">
+                 {{ (user.lastname)+(user.firstname)+ ' (' + (user.email)  + ')' }}
+            </mat-list-option>
+        </mat-selection-list>
+    </mat-form-field>
+
+
+    <mat-form-field appearance="fill">
+        <mat-label>그룹타입</mat-label>
+        <mat-select formControlName="grouptype" required>
+            <mat-option value="A">Academy</mat-option>
+            <mat-option value="B">Range</mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+        <mat-label>사용인원</mat-label>
+        <input matInput formControlName="quota" required>
+    </mat-form-field>  
+
+    <mat-form-field appearance="fill">
+        <mat-label>1인사용</mat-label>
+        <input matInput formControlName="storagespace" required>
+    </mat-form-field>  
+
+    <mat-form-field appearance="fill">
+        <mat-label>사업자번호</mat-label>
+        <input matInput formControlName="address" required>
+    </mat-form-field>  
+
+    <mat-form-field appearance="fill">
+        <mat-label>연락처</mat-label>
+        <input matInput formControlName="phone" required>
+    </mat-form-field>   
+
+    <mat-form-field appearance="fill">
+        <mat-label>그룹상태</mat-label>
+        <mat-select formControlName="status" required>
+            <mat-option value="Y">Active</mat-option>
+            <mat-option value="N">InActive</mat-option>
+            <mat-option value="P">Pending</mat-option>
+        </mat-select>
+    </mat-form-field>       
+
+    <ng-container *ngIf="mode === 'new' || mode === 'edit'">
+        <div class="btn-p">
+        <button class="dialog-btn btn-c" mat-button (click)="save()">저장</button>
+        <button class="dialog-btn-right btn-c" mat-button (click)="closeDialog('cancel')">취소</button>
+        </div>
+    </ng-container>
+    <ng-container *ngIf="mode === 'detail'">
+        <div class="btn-p">
+        <button class="dialog-btn btn-c" mat-button (click)="save()">수정</button>
+        <button class="dialog-btn-right btn-c" mat-button (click)="closeDialog('cancel')">취소</button>
+        </div>
+    </ng-container>
+</form>

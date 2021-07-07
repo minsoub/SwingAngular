@@ -1,0 +1,13 @@
+:host {
+    display: block;
+}
+
+/* .scroll-container {
+    height: 30vh;
+    overflow-y: auto;
+} */
+
+.scroll-container {
+    height: 100vh;
+    overflow-y: auto;
+}

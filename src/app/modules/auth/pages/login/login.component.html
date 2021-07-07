@@ -1,0 +1,30 @@
+
+<div style="background: #7668a2; height: 100vh; display: flex;">
+<!-- <div style="background: #c9ccd8; height: 100vh; display: flex;"> -->
+<div class="card-container">
+    <div class="title-type">
+        <h1>SwingSaver Admin</h1>
+        <p>Smart Attendance Management</p>
+    <!-- <p>Smart Attendance Management<br>" iCheck "</p>   -->
+    </div>
+    <div class="title-card">
+        <div class="img"></div>
+    </div>
+    <div class="input-card">
+        <!--app-sso-hist></app-sso-hist  -->
+        <form (ngSubmit)="login()" [formGroup]="loginForm">
+            <mat-form-field appearance="fill">
+                <mat-label>email</mat-label>
+                <input matInput formControlName="username" required email="true">
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+                <mat-label>password</mat-label>
+                <input matInput type="password" formControlName="password" required>
+            </mat-form-field>
+            <button class="login-btn" mat-raised-button type="submit" [disabled]="!loginForm.valid" color="primary" >로그인</button>
+        </form>
+        <button class="login-btn-second" mat-raised-button [routerLink]="['/auth/register']">회원가입</button>
+        <button class="login-btn-second" style="margin-right: 0;" mat-raised-button [routerLink]="['/auth/forget-password']">비밀번호찾기</button>
+    </div>
+</div>
+</div>
