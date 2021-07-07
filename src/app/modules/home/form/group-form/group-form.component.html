@@ -2,19 +2,19 @@
 <h2 class="dialog-title" *ngIf="mode === 'detail' || mode === 'edit'">그룹 수정</h2>
 <form [formGroup]="groupForm">
 
-    <mat-form-field [hidden]="true">
+    <mat-form-field [hidden]="true" class="invisible">
         <input matInput formControlName="id">
     </mat-form-field>
 
-    <mat-form-field [hidden]="true">
+    <mat-form-field [hidden]="true" class="invisible">
         <input matInput formControlName="startdate">
     </mat-form-field>  
 
-    <mat-form-field [hidden]="true">
+    <mat-form-field [hidden]="true" class="invisible">
         <input matInput formControlName="enddate">
     </mat-form-field>      
 
-    <mat-form-field [hidden]="true">
+    <mat-form-field [hidden]="true" class="invisible">
         <input matInput formControlName="del_yn">
     </mat-form-field>       
 
@@ -25,11 +25,11 @@
 
     <mat-form-field appearance="fill">
         <mat-label>그룹관리자</mat-label>
-        <mat-selection-list formControlName="groupadminid" >
-            <mat-list-option *ngFor="let user of userList$ | async" [value]="user.id">
+        <mat-select formControlName="groupadminid" [(value)]="selectedgroupadminid">
+            <mat-option *ngFor="let user of userList$ | async" [value]="user.id">
                  {{ (user.lastname)+(user.firstname)+ ' (' + (user.email)  + ')' }}
-            </mat-list-option>
-        </mat-selection-list>
+            </mat-option>
+        </mat-select>
     </mat-form-field>
 
 

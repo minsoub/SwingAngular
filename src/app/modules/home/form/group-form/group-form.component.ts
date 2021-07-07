@@ -22,12 +22,15 @@ export class GroupFormComponent implements OnInit {
 
   phonePattern = '([0-9]{9,11})';
   numberPattern = '([0-9]{1,5})';
+  selectedgroupadminid: string;
 
   constructor(public dialogRef: MatDialogRef<GroupFormComponent>,
     @Inject(MAT_DIALOG_DATA) public data,
     private formBuilder: FormBuilder,
     private commFacade: CommFacade
-    ) { }
+    ) {
+      this.selectedgroupadminid = this.data.groupInfo?.groupadminid;
+     }
 
   ngOnInit(): void {
     this.mode = this.data.mode;
@@ -50,7 +53,8 @@ export class GroupFormComponent implements OnInit {
       storagespace: new FormControl(this.data.groupInfo?.storagespace ?? '', [Validators.required, Validators.pattern(this.numberPattern)]),
       address: new FormControl(this.data.groupInfo?.address ?? '', [Validators.nullValidator]),
       phone: new FormControl(this.data.groupInfo?.phone ?? '', [Validators.required, Validators.pattern(this.phonePattern)]),
-      status: new FormControl(this.data.groupInfo?.status ?? '', [Validators.required])
+      status: new FormControl(this.data.groupInfo?.status ?? '', [Validators.required]),
+      groupadminid: this.data.groupInfo?.groupadminid ?? ''
     });
   }
 
