@@ -4,6 +4,7 @@ import {Observable, Observer} from 'rxjs';
 import {LoaderService} from '../service/loader.service';
 import {Logger} from '../../core/logger.service';
 import {environment} from '../../../environments/environment';
+import {AlertService} from '../../shared/service/alert.service';
 
 @Injectable()
 export class LoaderInterceptor implements HttpInterceptor {
@@ -12,7 +13,7 @@ export class LoaderInterceptor implements HttpInterceptor {
 
   private requests: HttpRequest<any>[] = [];
 
-  constructor(private loaderService: LoaderService) { }
+  constructor(private loaderService: LoaderService, private alertService: AlertService) { }
 
   removeRequest(req: HttpRequest<any>): void {
     const i = this.requests.indexOf(req);
@@ -45,6 +46,8 @@ export class LoaderInterceptor implements HttpInterceptor {
                     }
                   },
                   err => {
+                    console.log(err.error.message);
+                    this.alertService.openAlert(err.error.message);
                     this.log.error(err);
                     this.removeRequest(request);
                     observer.error(err);

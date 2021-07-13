@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {GroupContextInterface} from '../../data/schema/group';
+import {GroupContextInterface, GroupAdminInterface, GroupListInterface} from '../../data/schema/group';
 import {Observable, of} from 'rxjs';
 import {catchError, map} from 'rxjs/operators';
 import {GroupService} from '../service/group.service';
@@ -22,7 +22,7 @@ export class GroupFacade {
 
     searchGroupList(): void {
         this.groupService.searchGroupList().subscribe((res => {
-            if (res?.list) {
+            if (res?.grouplist) {
                 this.groupState.setGroupList(res);
             }else {
                 this.groupState.resetGroupList();
@@ -30,9 +30,13 @@ export class GroupFacade {
         }));
     }
 
-    getGroupList(): Observable<GroupContextInterface[]> {
+    getGroupList(): Observable<GroupListInterface> {
         return this.groupState.getGroupList();
     }
+
+    //getGroupAdminList(): Observable<GroupAdminInterface[]> {
+    //    return this.groupState.getGroupAdminList();
+    //}
 
     /**
      * 그룹 정보 저장
@@ -41,6 +45,10 @@ export class GroupFacade {
      */
     saveGroup(data): Observable<any> {
         return this.groupService.saveGroup(data);
+    }
+
+    deleteGroup(data): Observable<any> {
+        return this.groupService.deleteGroup(data);
     }
 
 }

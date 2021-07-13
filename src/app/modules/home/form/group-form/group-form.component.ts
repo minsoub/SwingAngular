@@ -54,7 +54,7 @@ export class GroupFormComponent implements OnInit {
       address: new FormControl(this.data.groupInfo?.address ?? '', [Validators.nullValidator]),
       phone: new FormControl(this.data.groupInfo?.phone ?? '', [Validators.required, Validators.pattern(this.phonePattern)]),
       status: new FormControl(this.data.groupInfo?.status ?? '', [Validators.required]),
-      groupadminid: this.data.groupInfo?.groupadminid ?? ''
+      groupadminid: new FormControl(this.data.groupInfo?.groupadminid ?? '', [Validators.required])
     });
   }
 

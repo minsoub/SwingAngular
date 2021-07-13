@@ -10,13 +10,14 @@ import {LoaderInterceptor} from './interceptor/loader.interceptor';
 import { AlertComponent } from './component/alert/alert.component';
 import { NavComponent } from './component/nav/nav.component';
 import { InfiniteScrollComponent } from './component/infinite-scroll/infinite-scroll.component';
+import { ConfirmComponent } from './component/confirm/confirm.component';
 //import { InfiniteScrollComponent } from './component/infinite-scroll/infinite-scroll.component';
 //import { BannerAppInduceComponent } from './component/banner-app-induce/banner-app-induce.component';
 //import { ConfirmComponent } from './component/confirm/confirm.component';
 //import { ErrorComponent } from './component/error/error.component';
 
 @NgModule({
-  declarations: [LoaderComponent,  AlertComponent, NavComponent, InfiniteScrollComponent,   ],
+  declarations: [LoaderComponent,  AlertComponent, NavComponent, InfiniteScrollComponent, ConfirmComponent,   ],
   imports: [
     CommonModule,
     RouterModule,
