@@ -11,7 +11,7 @@ export class GroupState {
     constructor() {}
 
     getGroupList(): Observable<GroupListInterface> {
-        console.log(this.groupListInfo);
+        //console.log(this.groupListInfo);
         return this.groupListInfo.asObservable();
     }
 
