@@ -30,6 +30,10 @@ export class GroupFacade {
         }));
     }
 
+    resetGroupList(): void {
+        this.groupState.resetGroupList();
+    }
+
     getGroupList(): Observable<GroupListInterface> {
         return this.groupState.getGroupList();
     }

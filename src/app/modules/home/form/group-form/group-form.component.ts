@@ -1,4 +1,4 @@
-import {Component, Inject, OnInit} from '@angular/core';
+import {Component, Inject, OnInit, AfterContentInit} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {Observable} from 'rxjs';
@@ -12,32 +12,54 @@ import {UserInterface} from '../../../../data/schema/user';
   templateUrl: './group-form.component.html',
   styleUrls: ['./group-form.component.css']
 })
-export class GroupFormComponent implements OnInit {
+export class GroupFormComponent implements OnInit, AfterContentInit {
 
   mode: string;
   groupForm: FormGroup;
   public dateFrom;
   public dateTo;
   userList$: Observable<UserInterface[]>;
+  uList: UserInterface[];
 
   phonePattern = '([0-9]{9,11})';
   numberPattern = '([0-9]{1,5})';
-  selectedgroupadminid: string;
+  selectedgroupadminid: string;  // select box default value
+  selectedstatus: string;
 
   constructor(public dialogRef: MatDialogRef<GroupFormComponent>,
     @Inject(MAT_DIALOG_DATA) public data,
     private formBuilder: FormBuilder,
     private commFacade: CommFacade
     ) {
-      this.selectedgroupadminid = this.data.groupInfo?.groupadminid;
+
      }
 
   ngOnInit(): void {
     this.mode = this.data.mode;
     this.userList$ = this.commFacade.getUserList();
-    this.commFacade.getAllUser();
-
     this.buildForm();
+    this.commFacade.getAllUser();
+  }
+
+  ngAfterContentInit(): void {
+    this.userList$.subscribe (
+      response => {
+        this.uList = response;
+        console.log(this.uList);
+        this.selectedgroupadminid = this.data.groupInfo?.groupadminid;
+        console.log(this.selectedgroupadminid);
+        this.groupForm.get('groupadminid').setValue(this.selectedgroupadminid);
+      },
+      err => console.log(err)
+    );
+
+    this.selectedstatus = this.data.groupInfo?.status;
+    console.log(this.selectedstatus);    
+    this.groupForm.get('status').setValue(this.selectedstatus);
+  }
+
+  compareObjects(obj1: any, obj2: any): boolean {
+    return obj1 === obj2;
   }
 
   private buildForm(): void {

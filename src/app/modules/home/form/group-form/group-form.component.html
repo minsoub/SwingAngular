@@ -25,8 +25,8 @@
 
     <mat-form-field appearance="fill">
         <mat-label>그룹관리자</mat-label>
-        <mat-select formControlName="groupadminid" [(value)]="selectedgroupadminid">
-            <mat-option *ngFor="let user of userList$ | async" [value]="user.id">
+        <mat-select formControlName="groupadminid" [(value)]="selectedgroupadminid" [compareWith]="compareObjects">
+            <mat-option *ngFor="let user of uList" [value]="user.id">
                  {{ (user.lastname)+(user.firstname)+ ' (' + (user.email)  + ')' }}
             </mat-option>
         </mat-select>
@@ -63,7 +63,7 @@
 
     <mat-form-field appearance="fill">
         <mat-label>그룹상태</mat-label>
-        <mat-select formControlName="status" required>
+        <mat-select formControlName="status" required [(value)]="selectedstatus">
             <mat-option value="Y">Active</mat-option>
             <mat-option value="N">InActive</mat-option>
             <mat-option value="P">Pending</mat-option>

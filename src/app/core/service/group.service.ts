@@ -35,6 +35,11 @@ export class GroupService {
     return this.http.post(URL, data);
   }
 
+  /**
+   * 그룹 정보 삭제
+   * @param data 
+   * @returns 
+   */
   deleteGroup(data): Observable<any> {
     const PATH = '/group/delete';
     const URL = this.BASE_URL + PATH;

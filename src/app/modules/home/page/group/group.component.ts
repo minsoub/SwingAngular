@@ -37,7 +37,8 @@ export class GroupComponent implements OnInit {
       groupFacade.getGroupList().subscribe((lists) => {     
         console.log(lists);
         if (lists != null) {
-        console.log("lists count => " + lists.grouplist.length);
+          this.adminInfoList = [];
+          console.log("lists count => " + lists.grouplist.length);
           for (let i=0; i<lists.grouplist.length; i++) {
             var data:GroupAdminInterface = {
                 id: lists.grouplist[i].id,

@@ -18,6 +18,7 @@ export class GroupState {
     setGroupList(lists: GroupListInterface): void {
         if (lists) {
             console.log(lists);
+            this.groupListInfo.next(null);
             this.groupListInfo.next(lists);
             //this.groupInfo.next(lists.grouplist);
             //this.groupAdminInfo.next(lists.groupadminlist);
