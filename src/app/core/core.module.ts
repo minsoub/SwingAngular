@@ -8,6 +8,8 @@ import { GroupFacade } from './facade/group.facade';
 import { GroupState } from "./state/group.state";
 import { CommFacade } from './facade/comm.facade';
 import { CommState } from "./state/comm.state";
+import { ProFacade } from './facade/pro.facade';
+import { ProState } from "./state/pro.state";
 
 @NgModule({
     declarations: [
@@ -22,6 +24,8 @@ import { CommState } from "./state/comm.state";
         GroupState,
         CommFacade,
         CommState,
+        ProFacade,
+        ProState,
         {
             provide: HTTP_INTERCEPTORS,
             useClass: TokenInterceptor,

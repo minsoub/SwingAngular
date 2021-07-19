@@ -7,14 +7,16 @@ import {HomeRoutingModule} from './home.routing';
 import {HomeComponent} from './home.component';
 import { GroupComponent } from './page/group/group.component';
 import { GroupFormComponent } from './form/group-form/group-form.component';
+import { ProComponent } from './page/pro/pro.component';
 
 
 @NgModule({
   declarations: [
 //      LoginComponent, 
 //      HomeComponent,
-      GroupComponent,
-GroupFormComponent,
+    GroupComponent,
+    GroupFormComponent,
+    ProComponent,
     ],
   imports: [
     CommonModule,

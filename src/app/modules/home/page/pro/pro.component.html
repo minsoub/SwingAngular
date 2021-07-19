@@ -1,0 +1,65 @@
+<!-- Title div -->
+<div class="top-img">
+    <div class="title-img">
+        <h1 style="margin: 10px;">Market Pro Management</h1>
+        <h4 style="margin: 0;">Smart Swingsaver Management " Admin "</h4>
+    </div>
+</div>
+
+<!-- Search Area -->
+<div>
+    <form class="area-search">
+        <button mat-raised-button (click)="searchPro()">검색</button>
+        <button mat-raised-button color="primary" (click)="proAdd('new')">Pro Add</button>
+        <button mat-raised-button color="warn" (click)="proDelete()">Pro Delete</button>
+    </form>
+</div>
+
+<p class="counter">{{listCount}}건</p>
+<app-infinite-scroll class="list-check-detail">
+    <table mat-table [dataSource]="dataSource" multiTemplateDataRows class="mat-elevation-z8">
+        <!-- Checkbox Column -->
+        <ng-container matColumnDef="select">
+            <th mat-header-cell *matHeaderCellDef>
+            <mat-checkbox (change)="$event ? masterToggle() : null"
+                            [checked]="selection.hasValue() && isAllSelected()"
+                            [indeterminate]="selection.hasValue() && !isAllSelected()">
+            </mat-checkbox>
+            </th>
+            <td mat-cell *matCellDef="let row">
+            <mat-checkbox (click)="$event.stopPropagation()"
+                            (change)="$event ? selection.toggle(row) : null"
+                            [checked]="selection.isSelected(row)">
+            </mat-checkbox>
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="email">
+            <th mat-header-cell *matHeaderCellDef> 아이디 </th>
+            <td mat-cell *matCellDef="let element">
+                {{element.email}}
+            </td>
+        </ng-container>
+        <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef> 이름 </th>
+            <td mat-cell *matCellDef="let element">
+                {{element.firstname}} {{element.lastname}}
+            </td>
+        </ng-container>
+        <ng-container matColumnDef="prolevel">
+            <th mat-header-cell *matHeaderCellDef> 프로레벨 </th>
+            <td mat-cell *matCellDef="let element">
+               {{element.prolevel != '' ? (element.prolevel == '0' ? 'InHouse' :  (element.prolevel == '1' ? 'Premium' : '')) : ''}}
+            </td>
+        </ng-container>  
+        <ng-container matColumnDef="lessonprice">
+            <th mat-header-cell *matHeaderCellDef> 레슨가격 </th>
+            <td mat-cell *matCellDef="let element">
+                [요금상세]
+            </td>
+        </ng-container>           
+        <tr mat-header-row *matHeaderRowDef="columnsToDisplay; sticky: true"></tr>
+        <tr mat-row *matRowDef="let row; columns: columnsToDisplay;" class="example-element-row" 
+            (click)="openProDetail(row)"></tr>
+    </table>    
+</app-infinite-scroll>

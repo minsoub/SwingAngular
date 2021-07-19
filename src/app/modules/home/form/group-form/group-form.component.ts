@@ -31,35 +31,41 @@ export class GroupFormComponent implements OnInit, AfterContentInit {
     private formBuilder: FormBuilder,
     private commFacade: CommFacade
     ) {
-
      }
 
   ngOnInit(): void {
     this.mode = this.data.mode;
-    this.userList$ = this.commFacade.getUserList();
-    this.buildForm();
     this.commFacade.getAllUser();
+    this.userList$ = this.commFacade.getUserList();
+    this.buildForm();    
   }
 
   ngAfterContentInit(): void {
+    this.uList = [];
     this.userList$.subscribe (
       response => {
         this.uList = response;
-        console.log(this.uList);
+        //console.log(this.uList);
         this.selectedgroupadminid = this.data.groupInfo?.groupadminid;
-        console.log(this.selectedgroupadminid);
-        this.groupForm.get('groupadminid').setValue(this.selectedgroupadminid);
+        //console.log(this.selectedgroupadminid);
+        //this.groupForm.get('groupadminid').setValue(this.selectedgroupadminid);
+        this.groupForm.controls.groupadminid.setValue(this.selectedgroupadminid);
       },
       err => console.log(err)
     );
 
     this.selectedstatus = this.data.groupInfo?.status;
-    console.log(this.selectedstatus);    
+    //console.log(this.selectedstatus);    
     this.groupForm.get('status').setValue(this.selectedstatus);
   }
 
+
   compareObjects(obj1: any, obj2: any): boolean {
-    return obj1 === obj2;
+    // console.log(obj1 + " => " + obj2 + " : " + (obj1 === obj2) + "," + (obj1 === 'number') + "," + (obj2 === 'number'));
+    var o1 = obj1+'';
+    var o2 = obj2+'';
+    if (o1 === o2) return true;
+    else  return false;
   }
 
   private buildForm(): void {
