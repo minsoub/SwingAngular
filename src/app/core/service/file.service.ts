@@ -6,7 +6,7 @@ import {Observable} from 'rxjs';
 @Injectable({
     providedIn: 'root'
 })
-export class ProService {
+export class FileService {
     private readonly BASE_URL = environment.baseUrl;
 
     constructor(private http: HttpClient) {}
@@ -15,16 +15,20 @@ export class ProService {
      * Market Pro 리스트 조회
      * @returns 
      */
-    searchProList(): Observable<any> {
-        const PATH = '/pro/prolist';
+    fileUpload(file): Observable<any> {
+        const PATH = '/file/upload';
         const url = this.BASE_URL + PATH;
 
-        return this.http.get(url);
+        const formData = new FormData();
+        formData.append("file", file);
+    
+        return this.http.post(url, formData);
     }
 
-    savePro(data): Observable<any> {
-        const PATH = '/pro/prosave';
-        const URL = this.BASE_URL + PATH;
-        return this.http.post(URL, data);
+    fileDelete(file_name): Observable<any> {
+        const PATH = '/file/delete';
+        const url = this.BASE_URL + PATH;
+        const data = { fileName: file_name };
+        return this.http.post(url, data);
     }
 }
