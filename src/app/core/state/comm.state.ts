@@ -1,5 +1,6 @@
 import {Injectable} from '@angular/core';
 import {BehaviorSubject, Observable} from 'rxjs';
+import { FileInterface } from 'src/app/data/schema/file';
 import {UserInterface} from '../../data/schema/user';
 
 

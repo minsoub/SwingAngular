@@ -11,6 +11,7 @@ import {ConfirmComponent} from '../../../../shared/component/confirm/confirm.com
 import {ProInterface, ProListInterface} from 'src/app/data/schema/pro';
 import { ProFacade } from '../../../../core/facade/pro.facade';
 import {Logger} from '../../../../core/logger.service';
+import { ProFormComponent } from '../../form/pro-form/pro-form.component';
 
 
 @Component({
@@ -36,9 +37,13 @@ export class ProComponent implements OnInit {
               private alertService: AlertService) { 
     
     proFacade.getProList().subscribe((lists) => {
-      console.log(lists);
-      console.log(lists.list);
-      //this.dataSource.data = lists.list;
+      if (lists != null)
+      {
+        console.log(lists);
+        console.log(lists.list);
+        this.dataSource.data = lists.list;
+        this.listCount = lists.list.length;
+      }
     });
   }
 
@@ -57,17 +62,33 @@ export class ProComponent implements OnInit {
   /**
    * Market Pro 신규 등록 및 수정 팝업 호출
    * @param mode 
-   * @param selectedGroup 
+   * @param selectedData 
    */
-  openProPopup(mode, selectedGroup?): void {
+  openProPopup(mode, selectedData?): void {
+    const dialogRef = this.dialog.open(ProFormComponent, {
+      width: '550px',
+      height: '620px',
+      disableClose: true,
+      data: {proInfo: selectedData ?? null, mode: mode}
+    });
 
+    // 저장을 수행한다.
+    dialogRef.beforeClosed().subscribe(result => {
+      if (result.type === 'confirm') {
+        this.proFacade.savePro(result.data).subscribe((res) => {
+          console.log(res);
+          this.alertService.openAlert("저장을 완료하였습니다!!!");
+          this.searchPro();
+        })
+      }
+    });
   }
   /**
    * Market Pro 정보 상세 보기 클릭
-   * @param selectedGroup 
+   * @param selectedData 
    */
-  openProDetail(selectedGroup): void {
-    this.openProPopup('detail', selectedGroup);
+  openProDetail(selectedData): void {
+    this.openProPopup('detail', selectedData);
   }
 
   /**

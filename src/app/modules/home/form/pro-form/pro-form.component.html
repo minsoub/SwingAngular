@@ -1,0 +1,114 @@
+<h2 class="dialog-title" *ngIf="mode === 'new'">마켓 프로 등록</h2>
+<h2 class="dialog-title" *ngIf="mode === 'edit'">마켓 프로 정보수정</h2>
+<h2 class="dialog-title" *ngIf="mode === 'detail'">마켓 프로 정보 상세보기</h2>
+
+<form [formGroup]="proForm">
+
+    <mat-form-field [hidden]="true" class="invisible">
+        <input matInput formControlName="id">
+    </mat-form-field>
+
+    <mat-form-field [hidden]="true" class="invisible">
+        <input matInput formControlName="profile_img">
+    </mat-form-field>    
+
+    <!-- 화면 정의 -->
+    <div *ngIf="mode === 'new' || mode === 'edit'">
+        <mat-form-field appearance="fill">
+            <mat-label>프로 아이디</mat-label>
+            <mat-select formControlName="userid" [(value)]="selecteduserid" [compareWith]="compareObjects">
+                <mat-option *ngFor="let user of uList" [value]="user.id">
+                    {{ (user.lastname)+(user.firstname)+ ' (' + (user.email)  + ')' }}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>     
+
+        <mat-form-field appearance="fill">
+            <mat-label>레슨가격</mat-label>
+            <input matInput formControlName="lessonprice" required>
+        </mat-form-field> 
+
+        <mat-form-field appearance="fill">
+            <mat-label>프로 레벨</mat-label>
+            <mat-select formControlName="prolevel" required [(value)]="selectedprolevel" [compareWith]="compareProObjects">
+                <mat-option value="0">InHouse(0)</mat-option>
+                <mat-option value="1">Premium(1)</mat-option>
+            </mat-select>
+        </mat-form-field> 
+
+        <mat-form-field appearance="fill">
+            <mat-label>프로필</mat-label>
+            <textarea matInput cdkTextareaAutosize
+                cdkAutosizeMinRows="4"
+                cdkAutosizeMaxRows="5" formControlName="profile" required></textarea>
+        </mat-form-field>          
+
+        <mat-form-field appearance="fill">
+            <mat-label>레슨방향</mat-label>
+            <textarea matInput cdkTextareaAutosize
+                cdkAutosizeMinRows="4"
+                cdkAutosizeMaxRows="4" formControlName="description" required></textarea>
+        </mat-form-field>  
+
+        
+        <mat-label>프로필 이미지</mat-label>
+        <input type="file" id="profile_file" accept="image/*" #pfile (change)="onFileChange(pfile.files)">
+         
+
+        <ng-container *ngIf="mode === 'new' || mode === 'edit'">
+            <div class="btn-p">
+            <button class="dialog-btn btn-c" mat-button (click)="save()">저장</button>
+            <button class="dialog-btn-right btn-c" mat-button (click)="closeDialog('cancel')">취소</button>
+            </div>
+        </ng-container>    
+
+    </div>
+
+    <!-- 상세 보기 화면 -->
+    <div *ngIf="mode === 'detail'">
+        <mat-form-field appearance="fill">
+            <mat-label>프로 아이디</mat-label>
+            <mat-select formControlName="userid" [(value)]="selecteduserid" [compareWith]="compareObjects">
+                <mat-option *ngFor="let user of uList" [value]="user.id">
+                    {{ (user.lastname)+(user.firstname)+ ' (' + (user.email)  + ')' }}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>     
+
+        <mat-form-field appearance="fill">
+            <mat-label>레슨가격</mat-label>
+            <input matInput formControlName="lessonprice" required>
+        </mat-form-field> 
+
+        <mat-form-field appearance="fill">
+            <mat-label>프로 레벨</mat-label>
+            <mat-select formControlName="prolevel" required [(value)]="selectedprolevel" [compareWith]="compareProObjects">
+                <mat-option value="0">InHouse(0)</mat-option>
+                <mat-option value="1">Premium(1)</mat-option>
+            </mat-select>
+        </mat-form-field> 
+
+        <mat-form-field appearance="fill">
+            <mat-label>프로필</mat-label>
+            <textarea matInput cdkTextareaAutosize
+                cdkAutosizeMinRows="4"
+                cdkAutosizeMaxRows="5" formControlName="profile" required></textarea>
+        </mat-form-field>          
+
+        <mat-form-field appearance="fill">
+            <mat-label>레슨방향</mat-label>
+            <textarea matInput cdkTextareaAutosize
+                cdkAutosizeMinRows="4"
+                cdkAutosizeMaxRows="4" formControlName="description" required></textarea>
+        </mat-form-field>          
+  
+        <ng-container *ngIf="mode === 'detail'">
+            <div class="btn-p">
+            <button class="dialog-btn btn-c" mat-button (click)="toggledEditForm()">수정</button>
+            <button class="dialog-btn-right btn-c" mat-button (click)="closeDialog('cancel')">취소</button>
+            </div>
+        </ng-container>        
+
+    </div>
+
+</form>

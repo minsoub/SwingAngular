@@ -8,6 +8,7 @@ import {HomeComponent} from './home.component';
 import { GroupComponent } from './page/group/group.component';
 import { GroupFormComponent } from './form/group-form/group-form.component';
 import { ProComponent } from './page/pro/pro.component';
+import { ProFormComponent } from './form/pro-form/pro-form.component';
 
 
 @NgModule({
@@ -17,6 +18,7 @@ import { ProComponent } from './page/pro/pro.component';
     GroupComponent,
     GroupFormComponent,
     ProComponent,
+    ProFormComponent,
     ],
   imports: [
     CommonModule,

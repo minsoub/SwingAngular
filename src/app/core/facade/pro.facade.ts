@@ -29,6 +29,16 @@ export class ProFacade {
         }));
     }
 
+    /**
+     * 마켓 프로 정보를 저장한다.
+     * 
+     * @param data 
+     * @returns 
+     */
+    savePro(data): Observable<any> {
+        return this.proService.savePro(data);
+    }
+
     resetProList(): void {
         this.proState.resetProList();
     }

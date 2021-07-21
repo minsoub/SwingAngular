@@ -13,6 +13,7 @@ import { ProState } from "./state/pro.state";
 
 @NgModule({
     declarations: [
+  
   ],
     imports: [
       HttpClientModule

@@ -1,0 +1,74 @@
+.dialog-btn {
+    margin-right: 10px;
+    background-color: #7668a2;
+    color: #ffffff;
+}
+
+.dialog-btn-right {
+    margin-right: 0px;
+    background-color: #dfdbec;
+}
+
+.btn-p {
+    display: flex;
+    margin-top: 15px;
+}
+
+.btn-c {    
+    flex: 1;
+    text-align: center;
+}
+
+.mat-form-field {
+    width: 100%;
+    margin-right: 0;
+}
+
+@media (max-width: 599px) {
+    .mat-form-field {
+        width: 100%;
+        margin-right: 0;
+    }
+}
+
+.comment {
+    color: #f44336;
+    transform: translateY(-15px);
+    margin-bottom: 10px;
+    font-size: 0.85em;
+}
+
+.comment mat-icon {
+    font-size: 1.75em;
+    margin-right: 8px;
+    float: left;
+    color: #ffad14;
+}
+
+.invisible{
+    display: block;
+    visibility: hidden;
+    height: 0;
+    width: 0;
+}
+/*******/
+
+/* 
+
+::ng-deep @media (max-width: 599px) {
+    .cdk-overlay-pane {
+        width: 100vh !important;
+        height: 100vh;
+        position: fixed !important;
+        bottom: 0;
+        align-items: flex-end;
+    }
+}
+
+::ng-deep .cdk-overlay-pane {
+    max-width: 100vw !important;
+}
+
+::ng-deep .cdk-overlay-connected-position-bounding-box .cdk-overlay-pane {
+    width: unset;
+} */
